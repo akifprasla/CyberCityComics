@@ -85,12 +85,15 @@ app.get("/", (req, res) => {
                 .then(() => {
                     const data = JSON.parse(body);
                     var transcript = renderTranscript(data.transcript);
+                    transcript = transcript.slice(0,transcript.indexOf("{{"));
+                    var title = renderTitle(data.transcript.slice(data.transcript.indexOf("{{"),data.transcript.length));
                     res.render("pages.ejs", {
                         data: data,
                         month: month[data.month],
                         rand: rand(),
                         pageViewersCount: pageViewersCount,
-                        transcript: transcript
+                        transcript: transcript,
+                        title:title
                     });
                 });
 
