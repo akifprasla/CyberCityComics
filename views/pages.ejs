@@ -30,10 +30,10 @@
                         <% var next=parseInt(data.num) + 1 %>
 
                             <form class="button-container" action="<%= prev %>">
-                                <button class="btn btn-danger">Prev</button>
+                                <button id="prevBtn" class="btn btn-danger">Prev</button>
                             </form>
                             <form class="button-container" action="<%= next %>">
-                                <button class="btn btn-danger">Next</button>
+                                <button id="nextBtn" class="btn btn-danger">Next</button>
                             </form>
 
                 </div>
@@ -64,6 +64,14 @@
 </body>
 
 <script>
+    if(parseInt("<%-data.num%>") ==1){
+        document.getElementById('prevBtn').disabled = true;
+    } 
+
+    if(parseInt("<%-data.num%>") ==2472){
+        document.getElementById('nextBtn').disabled = true;
+    } 
+
     if ("<%-transcript%>" !== "") {
         document.getElementById('transcript').innerHTML = "<%- transcript %>";
     }
