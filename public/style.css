@@ -1,0 +1,29 @@
+
+*{
+    margin-top: 0.1%;
+}
+
+body{
+    background-color: black !important;
+}
+
+
+.content{
+    background-color: #DFE1E6 !important;
+    border: 2px solid rgb(252, 249, 249) !important;
+    border-radius: 10px;
+}
+
+.button-container {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+button {
+    background-color: #ff4500 !important;
+    font-weight: 500 !important;
+}
+
+#transcript {
+    margin-top: 1%;
+}

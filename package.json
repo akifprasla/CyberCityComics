@@ -1,0 +1,21 @@
+{
+  "name": "cyber_city_comics",
+  "version": "1.0.0",
+  "description": "Case Study for Stratus360",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "firebase": "^8.6.5",
+    "heroku": "^7.54.0",
+    "mysql": "^2.18.1",
+    "request": "^2.88.2"
+  }
+}
