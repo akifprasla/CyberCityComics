@@ -26,4 +26,5 @@ button {
 
 #transcript {
     margin-top: 1%;
+    overflow-wrap: break-word;
 }
