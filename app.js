@@ -18,7 +18,7 @@ var connection;
 var isExist;
 //connect to database
 function connect() {
-   
+
     connection = mysql.createConnection({
         host: 'sql5.freemysqlhosting.net',
         user: 'sql5417599',
@@ -61,6 +61,8 @@ function setView(pageNum) {
     isExist = false;
 }
 
+app.use(ignoreFavicon);
+
 //homepage will be 1st page
 app.get("/", (req, res) => {
 
@@ -85,15 +87,15 @@ app.get("/", (req, res) => {
                 .then(() => {
                     const data = JSON.parse(body);
                     var transcript = renderTranscript(data.transcript);
-                    transcript = transcript.slice(0,transcript.indexOf("{{"));
-                    var title = renderTitle(data.transcript.slice(data.transcript.indexOf("{{"),data.transcript.length));
+                    transcript = transcript.slice(0, transcript.indexOf("{{"));
+                    var title = renderTitle(data.transcript.slice(data.transcript.indexOf("{{"), data.transcript.length));
                     res.render("pages.ejs", {
                         data: data,
                         month: month[data.month],
                         rand: rand(),
                         pageViewersCount: pageViewersCount,
                         transcript: transcript,
-                        title:title
+                        title: title
                     });
                 });
 
@@ -126,15 +128,15 @@ app.get("/:page", (req, res) => {
                 .then(() => {
                     const data = JSON.parse(body);
                     var transcript = renderTranscript(data.transcript);
-                    transcript = transcript.slice(0,transcript.indexOf("{{"));
-                    var title = renderTitle(data.transcript.slice(data.transcript.indexOf("{{"),data.transcript.length));
+                    transcript = transcript.slice(0, transcript.indexOf("{{"));
+                    var title = renderTitle(data.transcript.slice(data.transcript.indexOf("{{"), data.transcript.length));
                     res.render("pages.ejs", {
                         data: data,
                         month: month[data.month],
                         rand: rand(),
                         pageViewersCount: pageViewersCount,
                         transcript: transcript,
-                        title:title
+                        title: title
                     });
                 })
 
@@ -156,7 +158,7 @@ const renderTranscript = (transcript) => {
         '<<': '<i>',
         '>>': '</i>',
         '\n': '<br/>',
-        '"' : '\\"'
+        '"': '\\"'
     }
     const str = transcript.replace(/\[\[|\]\]|<<|>>|\n|"/gi, (matched) => {
         return notationList[matched]
@@ -176,6 +178,14 @@ const renderTitle = (title) => {
     });
 
     return str;
+}
+
+//function to deal with favicon requests
+function ignoreFavicon(req, res, next) {
+    if (req.originalUrl.includes('favicon.ico')) {
+        res.status(204).end()
+    }
+    next();
 }
 
 app.listen(PORT, () => {
