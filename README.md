@@ -1,7 +1,5 @@
 # CyberCityComics
 
-website: https://cybercitycomics-stratus360.herokuapp.com/
-
 THIS is a project i made for a case study where i had to use an api and display details from it on the web page.
 
 Used NODEJS for backend 
